@@ -1,6 +1,6 @@
 module "db" {
   //source         = "../../expense-dev-sg"
-  source         = "git::https://github.com/SB-AWSDevops/expense-dev-sg.git"
+  source         = "git::https://github.com/SB-AWSDevops/expense-dev-sg"
   project_name   = var.project_name
   env            = var.env
   sg_description = var.db_sg_description
@@ -10,7 +10,7 @@ module "db" {
 }
 
 module "backend" {
-  source         = "../../expense-dev-sg"
+  source         = "git::https://github.com/SB-AWSDevops/expense-dev-sg"
   project_name   = var.project_name
   env            = var.env
   sg_description = var.backend_sg_description
@@ -20,7 +20,7 @@ module "backend" {
 }
 
 module "frontend" {
-  source         = "../../expense-dev-sg"
+  source         = "git::https://github.com/SB-AWSDevops/expense-dev-sg"
   project_name   = var.project_name
   env            = var.env
   sg_description = var.frontend_sg_description
