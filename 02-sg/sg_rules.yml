@@ -1,0 +1,57 @@
+- name: SG rules
+  sg:
+  - expense-dev-db
+  - expense-dev-backend
+  - expense-dev-frontend
+  - expense-dev-bastion
+  - expense-dev-ansible
+
+  db:
+  - name: db_backend
+    desc: db accepting the backend traffic
+    source: backend
+    port: 3306
+  - name: db_bastion
+    desc: db accepting the bastion traffic
+    source: bastion
+    port: 3306
+
+  backend:
+  - name: backend_frontend
+    desc: backend accepting traffic from frontend
+    source: frontend
+    port: 8080
+  - name: backend_bastion
+    desc: backend accepting bastion traffic
+    source: bastion
+    port: 22
+  - name: backend_ansible
+    desc: backend accepting ansible traffic
+    source: ansible
+    port: 22
+
+  frontend:
+  - name: frontend_public
+    desc: frontend accepting traffic from public
+    source: public
+    port: 80
+  - name: frontend_bastion
+    desc: frontend accepting bastion traffic
+    source: bastion
+    port: 22
+  - name: frontend_ansible
+    desc: frontend accepting ansible traffic
+    source: ansible
+    port: 22
+
+  bastion:
+  - name: bastion_public
+    desc: bastion accepting public traffic
+    source: public
+    port: 22
+
+  ansible:
+  - name: ansible_public
+    desc: ansible accepting public traffic
+    source: public
+    port: 22

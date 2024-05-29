@@ -24,6 +24,12 @@ variable "backend_sg_description"{
 variable "frontend_sg_description"{
      default = "Security Group for Frontend Instances"
 }
+variable "bastion_sg_description"{
+     default = "Security Group for Bastion Instances"
+}
+variable "ansible_sg_description"{
+     default = "Security Group for Ansible Instances"
+}
 
 variable "sg_name"{
     default = "db"
