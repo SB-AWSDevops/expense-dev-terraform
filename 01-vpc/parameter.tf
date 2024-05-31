@@ -12,6 +12,13 @@ resource "aws_ssm_parameter" "public_subnet_ids" {
   //overwrite = true
 }
 
+resource "aws_ssm_parameter" "private_subnet_ids" {
+  name  = "/${var.project_name}/${var.env}/private_subnet_ids"
+  type  = "StringList"
+  value = join(",", module.vpc.private_subnet_ids)
+  //overwrite = true
+}
+
 resource "aws_ssm_parameter" "db_subnet_group_name" {
   name  = "/${var.project_name}/${var.env}/db_subnet_group_name"
   type  = "String"
