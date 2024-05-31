@@ -43,6 +43,7 @@ module "ansible" {
   vpc_security_group_ids = [data.aws_ssm_parameter.ansible_sg_id.value]
   subnet_id              = local.public_subnet_id
   ami                    = data.aws_ami.ami_id.id
+  user_data = file("expense.sh")
 
   tags = merge(
     var.common_tags,
@@ -67,7 +68,7 @@ module "records" {
       ]
     },
     {
-      name    = "backend"
+      name    = "frontend"
       type    = "A"
       ttl     = 1
       records = [
